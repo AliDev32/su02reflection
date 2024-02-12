@@ -11,7 +11,7 @@ class CacheTest {
     void testCacheNewObject() {
         var fraction = new Fraction(2, 3);
         var loggedFraction = new LoggedFractionProxy(fraction);
-        var cachedFraction = (Fractionable) Utils.cache(loggedFraction);
+        var cachedFraction = (Fractionable) CacheUtils.cache(loggedFraction);
 
         cachedFraction.doubleValue();
         Assertions.assertEquals(1, loggedFraction.getNoCacheInvokesCnt());
@@ -23,7 +23,7 @@ class CacheTest {
     void testCacheAfterMutatorSetNum() {
         var fraction = new Fraction(2, 3);
         var loggedFraction = new LoggedFractionProxy(fraction);
-        var cachedFraction = (Fractionable) Utils.cache(loggedFraction);
+        var cachedFraction = (Fractionable) CacheUtils.cache(loggedFraction);
 
         cachedFraction.doubleValue();
         Assertions.assertEquals(1, loggedFraction.getNoCacheInvokesCnt());
@@ -36,7 +36,7 @@ class CacheTest {
     void testCacheAfterMutatorSetDenom() {
         var fraction = new Fraction(2, 3);
         var loggedFraction = new LoggedFractionProxy(fraction);
-        var cachedFraction = (Fractionable) Utils.cache(loggedFraction);
+        var cachedFraction = (Fractionable) CacheUtils.cache(loggedFraction);
 
         cachedFraction.doubleValue();
         Assertions.assertEquals(1, loggedFraction.getNoCacheInvokesCnt());
